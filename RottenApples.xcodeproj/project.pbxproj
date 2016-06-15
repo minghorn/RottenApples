@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		7ACB89771D11F09B001107DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89761D11F09B001107DD /* AppDelegate.swift */; };
-		7ACB89791D11F09B001107DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89781D11F09B001107DD /* ViewController.swift */; };
 		7ACB897C1D11F09B001107DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB897A1D11F09B001107DD /* Main.storyboard */; };
 		7ACB897E1D11F09B001107DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB897D1D11F09B001107DD /* Assets.xcassets */; };
 		7ACB89811D11F09B001107DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB897F1D11F09B001107DD /* LaunchScreen.storyboard */; };
+		7ACB89891D11F0DB001107DD /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89881D11F0DB001107DD /* MoviesViewController.swift */; };
+		7ACB898C1D11FAE1001107DD /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB898B1D11FAE1001107DD /* MovieCell.swift */; };
+		7ACB89911D1206C3001107DD /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */; };
+		E7FEDB875E1F0D457EA12816 /* Pods_RottenApples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7729B6EF84ACAC00111333A /* Pods_RottenApples.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47C9CF2494953C1984DA3537 /* Pods-RottenApples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RottenApples.release.xcconfig"; path = "Pods/Target Support Files/Pods-RottenApples/Pods-RottenApples.release.xcconfig"; sourceTree = "<group>"; };
 		7ACB89731D11F09B001107DD /* RottenApples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenApples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACB89761D11F09B001107DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7ACB89781D11F09B001107DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7ACB897B1D11F09B001107DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7ACB897D1D11F09B001107DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ACB89801D11F09B001107DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ACB89821D11F09B001107DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ACB89881D11F0DB001107DD /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		7ACB898B1D11FAE1001107DD /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
+		B7729B6EF84ACAC00111333A /* Pods_RottenApples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RottenApples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1730E8EB14FF763325FA099 /* Pods-RottenApples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RottenApples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RottenApples/Pods-RottenApples.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7FEDB875E1F0D457EA12816 /* Pods_RottenApples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,8 @@
 			children = (
 				7ACB89751D11F09B001107DD /* RottenApples */,
 				7ACB89741D11F09B001107DD /* Products */,
+				D21A028DBB8591A93E9DFBCD /* Pods */,
+				81DF0D6E59230C74363BE825 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +65,49 @@
 		7ACB89751D11F09B001107DD /* RottenApples */ = {
 			isa = PBXGroup;
 			children = (
+				7ACB898D1D11FAF4001107DD /* View Controller */,
+				7ACB898A1D11FAAB001107DD /* Views */,
 				7ACB89761D11F09B001107DD /* AppDelegate.swift */,
-				7ACB89781D11F09B001107DD /* ViewController.swift */,
 				7ACB897A1D11F09B001107DD /* Main.storyboard */,
 				7ACB897D1D11F09B001107DD /* Assets.xcassets */,
 				7ACB897F1D11F09B001107DD /* LaunchScreen.storyboard */,
 				7ACB89821D11F09B001107DD /* Info.plist */,
 			);
 			path = RottenApples;
+			sourceTree = "<group>";
+		};
+		7ACB898A1D11FAAB001107DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7ACB898B1D11FAE1001107DD /* MovieCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7ACB898D1D11FAF4001107DD /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */,
+				7ACB89881D11F0DB001107DD /* MoviesViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		81DF0D6E59230C74363BE825 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7729B6EF84ACAC00111333A /* Pods_RottenApples.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D21A028DBB8591A93E9DFBCD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1730E8EB14FF763325FA099 /* Pods-RottenApples.debug.xcconfig */,
+				47C9CF2494953C1984DA3537 /* Pods-RottenApples.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +117,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ACB89851D11F09B001107DD /* Build configuration list for PBXNativeTarget "RottenApples" */;
 			buildPhases = (
+				7C8F1CBF14ADEAC56647610E /* [CP] Check Pods Manifest.lock */,
 				7ACB896F1D11F09B001107DD /* Sources */,
 				7ACB89701D11F09B001107DD /* Frameworks */,
 				7ACB89711D11F09B001107DD /* Resources */,
+				5EB1D593C34F4D2CA843F99A /* [CP] Embed Pods Frameworks */,
+				08237D345F100843C5A733D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,13 +179,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08237D345F100843C5A733D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RottenApples/Pods-RottenApples-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EB1D593C34F4D2CA843F99A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RottenApples/Pods-RottenApples-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C8F1CBF14ADEAC56647610E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7ACB896F1D11F09B001107DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ACB89791D11F09B001107DD /* ViewController.swift in Sources */,
 				7ACB89771D11F09B001107DD /* AppDelegate.swift in Sources */,
+				7ACB89911D1206C3001107DD /* MovieCollectionViewController.swift in Sources */,
+				7ACB89891D11F0DB001107DD /* MoviesViewController.swift in Sources */,
+				7ACB898C1D11FAE1001107DD /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +348,7 @@
 		};
 		7ACB89861D11F09B001107DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1730E8EB14FF763325FA099 /* Pods-RottenApples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RottenApples/Info.plist;
@@ -260,6 +360,7 @@
 		};
 		7ACB89871D11F09B001107DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C9CF2494953C1984DA3537 /* Pods-RottenApples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RottenApples/Info.plist;
@@ -288,6 +389,7 @@
 				7ACB89871D11F09B001107DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
