@@ -27,39 +27,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.insertSubview(refreshControl, atIndex: 0)
         // Do any additional setup after loading the view.
         
-        let apiKey = "25e59fa8eca742c2e7d6b100c5ba44da"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = NSURLRequest(
-            URL: url!,
-            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
         
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate: nil,
-            delegateQueue: NSOperationQueue.mainQueue()
-        )
         
         //Show HUD before the request is made
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
-        let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
-             completionHandler: { (dataOrNil, response, error) in
-                //Hide HUD once the request is made
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                
-                //async callback
-                if let data = dataOrNil {
-                    //Parse JSON into a NSDictionary and load it into a constant "responseDictionary"
-                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                        data, options:[]) as? NSDictionary {
-                        print("response: \(responseDictionary)")
-                        self.movies = responseDictionary["results"] as? [NSDictionary]
-                        self.tableView.reloadData()
-                    }
-                }
-        })
-        task.resume()
+        sendRequest()
+        
+        //Hide HUD once the request is made
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +70,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func refreshControlAction(refreshControl: UIRefreshControl) {
+        sendRequest()
+        refreshControl.endRefreshing()
+    }
+    
+    func sendRequest() {
         let apiKey = "25e59fa8eca742c2e7d6b100c5ba44da"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -119,9 +101,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     self.tableView.reloadData()
                 }
             }
-            refreshControl.endRefreshing()
         })
         task.resume()
+        
     }
 
 }
