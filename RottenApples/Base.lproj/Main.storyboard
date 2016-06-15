@@ -19,7 +19,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="155" id="hcF-2E-cfM" customClass="MovieCell" customModule="RottenApples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="155"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcF-2E-cfM" id="X8x-Jt-GNk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
@@ -60,7 +60,8 @@
                         </accessibility>
                     </view>
                     <navigationItem key="navigationItem" title="Rotten Apples" id="CCs-A3-7iG">
-                        <barButtonItem key="leftBarButtonItem" title="Details View" id="opb-yI-dnx">
+                        <barButtonItem key="leftBarButtonItem" title="Grid" id="opb-yI-dnx">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="g1D-EL-Brv" kind="push" id="u1b-Ih-HGw"/>
                             </connections>
@@ -75,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="733.5" y="330.5"/>
         </scene>
-        <!--Movie Collection View Controller-->
+        <!--Rotten Apples-->
         <scene sceneID="Efw-AM-3RI">
             <objects>
                 <viewController id="g1D-EL-Brv" customClass="MovieCollectionViewController" customModule="RottenApples" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,8 +94,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="s9d-z9-zH6">
-                                        <rect key="frame" x="0.0" y="64" width="170" height="210"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="s9d-z9-zH6" customClass="MovieCollectionCell" customModule="RottenApples" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="210"/>
@@ -107,13 +108,22 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outlet property="MoviePoster" destination="SbB-VG-jCa" id="9Iz-tt-Nsm"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RZI-Me-NXK"/>
+                    <navigationItem key="navigationItem" title="Rotten Apples" id="RZI-Me-NXK">
+                        <barButtonItem key="leftBarButtonItem" title="Details" id="di1-Mu-aha">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="push" id="5gS-NX-eIQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="moviesCollection" destination="9WY-7q-KFQ" id="giu-23-9Hr"/>
@@ -142,4 +152,8 @@
             <point key="canvasLocation" x="275" y="331"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5gS-NX-eIQ"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
