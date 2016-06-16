@@ -15,6 +15,8 @@
 		7ACB898C1D11FAE1001107DD /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB898B1D11FAE1001107DD /* MovieCell.swift */; };
 		7ACB89911D1206C3001107DD /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */; };
 		7ACB89931D121657001107DD /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89921D121657001107DD /* MovieCollectionCell.swift */; };
+		7ACB89951D125EA4001107DD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89941D125EA4001107DD /* SearchViewController.swift */; };
+		7ACB89971D1261AB001107DD /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89961D1261AB001107DD /* ResultsCell.swift */; };
 		E7FEDB875E1F0D457EA12816 /* Pods_RottenApples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7729B6EF84ACAC00111333A /* Pods_RottenApples.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,8 @@
 		7ACB898B1D11FAE1001107DD /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
 		7ACB89921D121657001107DD /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
+		7ACB89941D125EA4001107DD /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7ACB89961D1261AB001107DD /* ResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		B7729B6EF84ACAC00111333A /* Pods_RottenApples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RottenApples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1730E8EB14FF763325FA099 /* Pods-RottenApples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RottenApples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RottenApples/Pods-RottenApples.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,7 +71,7 @@
 		7ACB89751D11F09B001107DD /* RottenApples */ = {
 			isa = PBXGroup;
 			children = (
-				7ACB898D1D11FAF4001107DD /* View Controller */,
+				7ACB898D1D11FAF4001107DD /* View Controllers */,
 				7ACB898A1D11FAAB001107DD /* Views */,
 				7ACB89761D11F09B001107DD /* AppDelegate.swift */,
 				7ACB897A1D11F09B001107DD /* Main.storyboard */,
@@ -83,17 +87,19 @@
 			children = (
 				7ACB89921D121657001107DD /* MovieCollectionCell.swift */,
 				7ACB898B1D11FAE1001107DD /* MovieCell.swift */,
+				7ACB89961D1261AB001107DD /* ResultsCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		7ACB898D1D11FAF4001107DD /* View Controller */ = {
+		7ACB898D1D11FAF4001107DD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7ACB89941D125EA4001107DD /* SearchViewController.swift */,
 				7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */,
 				7ACB89881D11F0DB001107DD /* MoviesViewController.swift */,
 			);
-			name = "View Controller";
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		81DF0D6E59230C74363BE825 /* Frameworks */ = {
@@ -235,8 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ACB89951D125EA4001107DD /* SearchViewController.swift in Sources */,
 				7ACB89771D11F09B001107DD /* AppDelegate.swift in Sources */,
 				7ACB89931D121657001107DD /* MovieCollectionCell.swift in Sources */,
+				7ACB89971D1261AB001107DD /* ResultsCell.swift in Sources */,
 				7ACB89911D1206C3001107DD /* MovieCollectionViewController.swift in Sources */,
 				7ACB89891D11F0DB001107DD /* MoviesViewController.swift in Sources */,
 				7ACB898C1D11FAE1001107DD /* MovieCell.swift in Sources */,

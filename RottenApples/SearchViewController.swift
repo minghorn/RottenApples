@@ -1,5 +1,5 @@
 //
-//  MoviesViewController.swift
+//  SearchViewController.swift
 //  RottenApples
 //
 //  Created by Ming Horn on 6/15/16.
@@ -10,16 +10,20 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
 
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var movieSearchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     //Optional in case the request doesn't work or doesn't give a response
     var movies: [NSDictionary]?
+    var filteredData: [NSDictionary]?
+    
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchController = UISearchController(searchResultsController: nil)
         tableView.dataSource = self
         
         //Initialize a new refresh control instance
@@ -31,9 +35,29 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         sendRequest("hud", refreshControl: nil)
         
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController.searchResultsUpdater = self
+        
+        searchController.searchBar.sizeToFit()
+        navigationItem.titleView = searchController.searchBar
+        
+        // By default the navigation bar hides when presenting the
+        // search interface.  Obviously we don't want this to happen if
+        // our search bar is inside the navigation bar.
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        // If we are using this same view controller to present the results
+        // dimming it out wouldn't make sense. Should probably only set
+        // this to yes if using another controller to display the search results.
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
+        
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,21 +73,23 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ResultsCell", forIndexPath: indexPath) as! ResultsCell
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
-        let baseUrl = "https://image.tmdb.org/t/p/w342"
-        let imgUrl = NSURL(string: baseUrl + posterPath)
+        let bkgPath = movie["backdrop_path"] as? String
+        if(bkgPath != nil) {
+            cell.backgroundImg.hidden = false
+            let baseUrl = "https://image.tmdb.org/t/p/w342"
+            let imgUrl = NSURL(string: baseUrl + bkgPath!)
+            cell.backgroundImg.setImageWithURL(imgUrl!)
+        } else {
+            cell.backgroundImg.hidden = true
+        }
         
         cell.titleLabel.text = title
-        cell.overviewLabel.text = overview
-        cell.posterView.setImageWithURL(imgUrl!)
-        
         return cell
     }
-
+    
     func refreshControlAction(refreshControl: UIRefreshControl) {
         sendRequest("ref", refreshControl: refreshControl)
     }
@@ -103,6 +129,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         })
         task.resume()
         
+    }
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
     }
 
 }
