@@ -19,7 +19,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultsCell" rowHeight="120" id="8Ba-uq-FSW" customClass="ResultsCell" customModule="RottenApples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ba-uq-FSW" id="hqX-0i-XFc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
@@ -48,7 +48,7 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -96,9 +96,28 @@
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="yvy-we-NI1">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <view key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" id="DKg-hL-iMt">
+                                    <rect key="frame" x="0.0" y="667" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UK1-mP-cnL">
+                                            <rect key="frame" x="127" y="11" width="120" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="155" id="hcF-2E-cfM" customClass="MovieCell" customModule="RottenApples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="155"/>
+                                        <rect key="frame" x="0.0" y="136" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcF-2E-cfM" id="X8x-Jt-GNk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
@@ -143,17 +162,20 @@
                         <barButtonItem key="leftBarButtonItem" title="Grid" id="opb-yI-dnx">
                             <color key="tintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="g1D-EL-Brv" kind="push" id="u1b-Ih-HGw"/>
+                                <segue destination="FPw-sD-BSj" kind="modal" modalTransitionStyle="flipHorizontal" id="u1b-Ih-HGw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="e58-Ps-dxG">
                             <connections>
-                                <segue destination="FPU-Xg-pso" kind="push" id="Fla-ph-XB9"/>
+                                <action selector="searchClicked:" destination="BYZ-38-t0r" id="LL0-kf-9RT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="networkError" destination="DKg-hL-iMt" id="4xh-OE-LX4"/>
+                        <outlet property="searchBar" destination="yvy-we-NI1" id="0Jo-2z-LTj"/>
+                        <outlet property="searchButton" destination="e58-Ps-dxG" id="yHx-il-CXk"/>
                         <outlet property="tableView" destination="THm-qV-UL5" id="JiB-BX-wNS"/>
                     </connections>
                 </viewController>
@@ -181,7 +203,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="MovieCollectionCell" id="s9d-z9-zH6" customClass="MovieCollectionCell" customModule="RottenApples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="179" height="275"/>
+                                        <rect key="frame" x="0.0" y="64" width="179" height="275"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="275"/>
@@ -206,9 +228,10 @@
                     <navigationItem key="navigationItem" title="Rotten Apples" id="RZI-Me-NXK">
                         <barButtonItem key="leftBarButtonItem" title="Details" id="di1-Mu-aha">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="push" id="5gS-NX-eIQ"/>
+                                <segue destination="mHm-tG-qgv" kind="modal" modalTransitionStyle="flipHorizontal" id="IRh-hW-dsh"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="vIb-mb-ufc"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -217,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Q3-fs-BMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172.5" y="330.5"/>
+            <point key="canvasLocation" x="1759.5" y="330.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CLM-ba-zqR">
@@ -227,7 +250,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jTZ-av-gvt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -236,11 +259,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGK-Ft-nyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="331"/>
+            <point key="canvasLocation" x="1261" y="481"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="P0F-Mj-Onz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FPw-sD-BSj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="oUJ-n7-vwB"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EIX-dz-z8y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g1D-EL-Brv" kind="relationship" relationship="rootViewController" id="HYW-Qv-ms3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e7o-ix-0eX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628.5" y="-517.5"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="5gS-NX-eIQ"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -10,17 +10,23 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var networkError: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    var searchController: UISearchController!
     
     //Optional in case the request doesn't work or doesn't give a response
     var movies: [NSDictionary]?
+    var filteredDictionary: [NSDictionary]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        networkError.hidden = true
         tableView.dataSource = self
+        searchBar.delegate = self
         
         //Initialize a new refresh control instance
         let refreshControl = UIRefreshControl()
@@ -31,6 +37,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         sendRequest("hud", refreshControl: nil)
         
+        //Create the search controller
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.sizeToFit()
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
         
     }
 
@@ -95,14 +109,60 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 //Parse JSON into a NSDictionary and load it into a constant "responseDictionary"
                 if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                     data, options:[]) as? NSDictionary {
-                    print("response: \(responseDictionary)")
+                    //print("response: \(responseDictionary)")
                     self.movies = responseDictionary["results"] as? [NSDictionary]
                     self.tableView.reloadData()
                 }
+            } else {
+                self.networkError.hidden = false
             }
         })
         task.resume()
         
     }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    }
+    
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        if searchText.isEmpty {
+            filteredDictionary = movies
+        } else {
+            // The user has entered text into the search box
+            // Use the filter method to iterate over all items in the data array
+            // For each item, return true if the item should be included and false if the
+            // item should NOT be included
+            filteredDictionary = movies!.filter({(dataItem: NSDictionary) -> Bool in
+                // If dataItem matches the searchText, return true to include it
+                let item = dataItem[]
+                if dataItem[indexPath.row]["title"].rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        }
+        tableView.reloadData()
+    }
+    
+    @IBAction func searchClicked(sender: AnyObject) {
+        showSearchBar()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        hideSearchBar()
+    }
+    
+    func showSearchBar() {
+        navigationItem.titleView = searchController.searchBar
+        navigationItem.setLeftBarButtonItem(nil, animated: true)
+    }
+    
+    func hideSearchBar() {
+        
+    }
+
 
 }
