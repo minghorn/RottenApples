@@ -134,15 +134,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             // Use the filter method to iterate over all items in the data array
             // For each item, return true if the item should be included and false if the
             // item should NOT be included
-            filteredDictionary = movies!.filter({(dataItem: NSDictionary) -> Bool in
-                // If dataItem matches the searchText, return true to include it
-                let item = dataItem[]
-                if dataItem[indexPath.row]["title"].rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
-                    return true
-                } else {
-                    return false
+            for(var i = 0; i < movies!.count; i++) {
+                if(movies![i]["title"]!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != 0) {
+                    filteredDictionary?.append(movies![i])
                 }
-            })
+            }
         }
         tableView.reloadData()
     }
