@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AAED2A91D149A1E00892FF5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAED2A81D149A1E00892FF5 /* DetailsViewController.swift */; };
 		7ACB89771D11F09B001107DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB89761D11F09B001107DD /* AppDelegate.swift */; };
 		7ACB897C1D11F09B001107DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB897A1D11F09B001107DD /* Main.storyboard */; };
 		7ACB897E1D11F09B001107DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB897D1D11F09B001107DD /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		47C9CF2494953C1984DA3537 /* Pods-RottenApples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RottenApples.release.xcconfig"; path = "Pods/Target Support Files/Pods-RottenApples/Pods-RottenApples.release.xcconfig"; sourceTree = "<group>"; };
+		7AAED2A81D149A1E00892FF5 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7ACB89731D11F09B001107DD /* RottenApples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenApples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACB89761D11F09B001107DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ACB897B1D11F09B001107DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,9 +97,10 @@
 		7ACB898D1D11FAF4001107DD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7ACB89941D125EA4001107DD /* SearchViewController.swift */,
-				7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */,
 				7ACB89881D11F0DB001107DD /* MoviesViewController.swift */,
+				7AAED2A81D149A1E00892FF5 /* DetailsViewController.swift */,
+				7ACB89901D1206C3001107DD /* MovieCollectionViewController.swift */,
+				7ACB89941D125EA4001107DD /* SearchViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				7ACB89951D125EA4001107DD /* SearchViewController.swift in Sources */,
 				7ACB89771D11F09B001107DD /* AppDelegate.swift in Sources */,
 				7ACB89931D121657001107DD /* MovieCollectionCell.swift in Sources */,
+				7AAED2A91D149A1E00892FF5 /* DetailsViewController.swift in Sources */,
 				7ACB89971D1261AB001107DD /* ResultsCell.swift in Sources */,
 				7ACB89911D1206C3001107DD /* MovieCollectionViewController.swift in Sources */,
 				7ACB89891D11F0DB001107DD /* MoviesViewController.swift in Sources */,

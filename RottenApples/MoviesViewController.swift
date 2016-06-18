@@ -10,13 +10,12 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var networkError: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchButton: UIBarButtonItem!
-    var searchController: UISearchController!
     
     //Optional in case the request doesn't work or doesn't give a response
     var movies: [NSDictionary]?
@@ -26,7 +25,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         networkError.hidden = true
         tableView.dataSource = self
-        searchBar.delegate = self
+        //searchBar.delegate = self
         
         //Initialize a new refresh control instance
         let refreshControl = UIRefreshControl()
@@ -37,14 +36,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         sendRequest("hud", refreshControl: nil)
         
-        //Create the search controller
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = false
+        //Deselect tableView cell
         
-        searchController.searchBar.sizeToFit()
         
-        // Sets this view controller as presenting view controller for the search interface
-        definesPresentationContext = true
+//        //Create the search controller
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.dimsBackgroundDuringPresentation = false
+//        
+//        searchController.searchBar.sizeToFit()
+//        
+//        // Sets this view controller as presenting view controller for the search interface
+//        definesPresentationContext = true
         
     }
 
@@ -122,41 +124,30 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
     }
     
-    // This method updates filteredData based on the text in the Search Box
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        if searchText.isEmpty {
-            filteredDictionary = movies
-        } else {
-            // The user has entered text into the search box
-            // Use the filter method to iterate over all items in the data array
-            // For each item, return true if the item should be included and false if the
-            // item should NOT be included
-            for(var i = 0; i < movies!.count; i++) {
-                if(movies![i]["title"]!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != 0) {
-                    filteredDictionary?.append(movies![i])
-                }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detail" {
+            let vc = segue.destinationViewController as? DetailsViewController
+            let indexPath1 = tableView.indexPathForCell(sender as! UITableViewCell)
+            let movie = movies![indexPath1!.row]
+            let bannerSegue = movie.valueForKeyPath("backdrop_path") as? String
+            let posterSegue = movie.valueForKeyPath("poster_path") as? String
+            let titleSegue = movie.valueForKeyPath("title") as? String
+            let ratingSegue = movie.valueForKeyPath("vote_average") as? Double
+            let overviewSegue = movie.valueForKeyPath("overview") as? String
+            
+            if(bannerSegue != nil) {
+                vc!.bannerLoad = bannerSegue!
             }
+            if(posterSegue != nil) {
+                vc!.posterLoad = posterSegue!
+            }
+            vc!.titleLoad = titleSegue!
+            vc!.ratingLoad = ratingSegue!
+            vc!.overviewLoad = overviewSegue!
         }
-        tableView.reloadData()
-    }
-    
-    @IBAction func searchClicked(sender: AnyObject) {
-        showSearchBar()
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        hideSearchBar()
-    }
-    
-    func showSearchBar() {
-        navigationItem.titleView = searchController.searchBar
-        navigationItem.setLeftBarButtonItem(nil, animated: true)
-    }
-    
-    func hideSearchBar() {
         
     }
 

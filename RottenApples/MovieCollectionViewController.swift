@@ -98,6 +98,30 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDataSourc
     func refreshControlAction(refreshControl: UIRefreshControl) {
         sendRequest("ref", refreshControl: refreshControl)
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detail" {
+            let indexPath1 = self.moviesCollection.indexPathForCell(sender as! UICollectionViewCell)
+            let vc = segue.destinationViewController as? DetailsViewController
+            let movie = movies![indexPath1!.item]
+            let bannerSegue = movie.valueForKeyPath("backdrop_path") as? String
+            let posterSegue = movie.valueForKeyPath("poster_path") as? String
+            let titleSegue = movie.valueForKeyPath("title") as? String
+            let ratingSegue = movie.valueForKeyPath("vote_average") as? Double
+            let overviewSegue = movie.valueForKeyPath("overview") as? String
+            print("trying")
+            
+            if(bannerSegue != nil) {
+                vc!.bannerLoad = bannerSegue!
+            }
+            if(posterSegue != nil) {
+                vc!.posterLoad = posterSegue!
+            }
+            vc!.titleLoad = titleSegue!
+            vc!.ratingLoad = ratingSegue!
+            vc!.overviewLoad = overviewSegue!
+        }
+        
+    }
 
 }
 

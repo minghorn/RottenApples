@@ -65,8 +65,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchRes
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //if movies returned data return the length, otherwise return 0 because it can't be nil
-        if let movies = movies {
-            return movies.count
+        if let filteredData = filteredData {
+            return filteredData.count
         } else {
             return 0
         }
@@ -131,6 +131,53 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchRes
         
     }
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+    }
+    
+    // This method updates filteredData based on the text in the Search Box
+//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        // When there is no text, filteredData is the same as the original data
+//        if searchText.isEmpty {
+//            filteredData = movies
+//        } else {
+//            // The user has entered text into the search box
+//            // Use the filter method to iterate over all items in the data array
+//            // For each item, return true if the item should be included and false if the
+//            // item should NOT be included
+//            filteredData = movies!.filter({(dataItem: NSDictionary) -> Bool in
+//                // If dataItem matches the searchText, return true to include it
+//                let title = String(dataItem["title"])
+//                if title.rangeOfString(searchText, options: .CaseInsensitiveSearch) != 0 {
+//                    return true
+//                } else {
+//                    return false
+//                }
+//            })
+//        }
+//        tableView.reloadData()
+//    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detail" {
+            let vc = segue.destinationViewController as? DetailsViewController
+            let indexPath1 = tableView.indexPathForCell(sender as! UITableViewCell)
+            let movie = movies![indexPath1!.row]
+            let bannerSegue = movie.valueForKeyPath("backdrop_path") as? String
+            let posterSegue = movie.valueForKeyPath("poster_path") as? String
+            let titleSegue = movie.valueForKeyPath("title") as? String
+            let ratingSegue = movie.valueForKeyPath("vote_average") as? Double
+            let overviewSegue = movie.valueForKeyPath("overview") as? String
+            
+            if(bannerSegue != nil) {
+                vc!.bannerLoad = bannerSegue!
+            }
+            if(posterSegue != nil) {
+                vc!.posterLoad = posterSegue!
+            }
+            vc!.titleLoad = titleSegue!
+            vc!.ratingLoad = ratingSegue!
+            vc!.overviewLoad = overviewSegue!
+        }
+        
     }
 
 }
